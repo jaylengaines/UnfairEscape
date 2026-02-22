@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     private PlayerMovement normalMovement;
     private PlayerMovementIce iceMovement;
 
+    public bool hasKey = false;
+
     private void Awake(){
         if (Instance != null && Instance != this){
             Destroy(gameObject);
@@ -33,5 +35,11 @@ public class GameManager : MonoBehaviour
     public void SwitchToNormalMovement(){
         normalMovement.enabled = true;
         iceMovement.enabled = false;
+    }
+
+    public void WinGame(){
+        Debug.Log("You win!");
+        
+
     }
 }
