@@ -19,8 +19,9 @@ public AudioSource stunAudio;
 
     public void Stun(float duration) // stun the enemy for the amount of the duration
     {
+        stunAudio.Play(); // play the stun audio
         isStunned = true; // set the enemy to stunned
         stunDuration = duration; // set the stun duration to the duration
-        stunAudio.Play(); // play the stun audio
+        
     }
 }
