@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     float verticalInput; // Vertical input for the player
     Vector3 moveDirection; // The direction of the player
 
+
     Rigidbody rb; // The rigidbody of the player to apply forces to the player
     private void Start()
     {
@@ -86,4 +87,5 @@ public class PlayerMovement : MonoBehaviour
     private void ResetJump(){
         readyToJump = true;
     }
+   
 }
