@@ -29,6 +29,7 @@ public class PlayerStun : MonoBehaviour
         {
             nextStunTime = Time.time + stunCooldown;
             StartCoroutine(Stun());
+            Debug.Log("Stunned");
         }
     }
 
