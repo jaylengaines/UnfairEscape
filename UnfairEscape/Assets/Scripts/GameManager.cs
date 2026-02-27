@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     private PlayerMovement normalMovement;
     private PlayerMovementIce iceMovement;
 
-    public bool hasKey = false;
+    public bool hasIceKey = false;
+    public bool isDarkZoneActive = false;
+    public GameObject darkZone;
 
     private void Awake(){
         if (Instance != null && Instance != this){
@@ -41,5 +43,15 @@ public class GameManager : MonoBehaviour
         Debug.Log("You win!");
         
 
+    }
+    public void EnableDarkZone(){
+        isDarkZoneActive = true;
+        // enable the dark zone
+        darkZone.SetActive(true);
+    }
+    public void DisableDarkZone(){
+        isDarkZoneActive = false;
+        // disable the dark zone
+        darkZone.SetActive(false);
     }
 }
