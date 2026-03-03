@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     private PlayerMovementIce iceMovement;
 
     public bool hasIceKey = false;
-    public bool isDarkZoneActive = false;
+    public bool hasDarkZoneKey = false;
+
+    public bool hasParkourKey = false;
     public GameObject darkZone;
+    public GameObject parkourZone;
 
     private void Awake(){
         if (Instance != null && Instance != this){
@@ -45,12 +48,11 @@ public class GameManager : MonoBehaviour
 
     }
     public void EnableDarkZone(){
-        isDarkZoneActive = true;
+        hasDarkZoneKey = true;
         // enable the dark zone
         darkZone.SetActive(true);
     }
     public void DisableDarkZone(){
-        isDarkZoneActive = false;
         // disable the dark zone
         darkZone.SetActive(false);
     }
