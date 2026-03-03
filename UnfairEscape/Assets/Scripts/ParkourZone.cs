@@ -13,7 +13,6 @@ public class ParkourZone : MonoBehaviour
     public void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
             EnableParkourMovement();
-            
         }
     }
 }

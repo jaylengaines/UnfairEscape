@@ -13,7 +13,7 @@ public class ParkourZoneActivator : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.hasIceKey = true; // optional if you want dark zone gated behind key
+            GameManager.Instance.hasParkourKey = true; // optional if you want dark zone gated behind key
             gameObject.SetActive(false);           // one-time pickup style
         }
     }
