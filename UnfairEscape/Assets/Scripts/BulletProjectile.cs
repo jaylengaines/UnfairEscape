@@ -22,13 +22,14 @@ public class BulletProjectile : MonoBehaviour // Script placed on bullet prefab
         speed = newSpeed; // Apply shooter-defined bullet speed
     }
 
-    void OnTriggerEnter(Collider other) // Hit detection callback
-    {
-        if (other.CompareTag("Player"))
-        {
+    // We intentionally ignore trigger colliders so zone/room triggers do not delete bullets.
+    void OnTriggerEnter(Collider other) { }
+
+    void OnCollisionEnter(Collision collision){ // Destroy bullet on physical collision only
+        if (collision.gameObject.CompareTag("Player")){
             SceneManager.LoadScene("GameOver");
         }
 
-        Destroy(gameObject); // Destroy bullet on any hit
+        Destroy(gameObject); // Destroy on any non-trigger collision (walls, props, player)
     }
 }
