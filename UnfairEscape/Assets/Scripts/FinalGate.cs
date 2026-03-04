@@ -29,31 +29,31 @@ public class FinalGate : MonoBehaviour
                           GameManager.Instance.hasDarkZoneKey &&
                           GameManager.Instance.hasParkourKey;
 
-        if (hasAllKeys && !isOpen && !isOpening)
+        if (hasAllKeys && !isOpen && !isOpening) // if the gate has all keys and is not open and is not opening
         {
-            isOpening = true;
-            playOnce = true;
+            isOpening = true; // set the is opening flag to true
+            playOnce = true; // set the play once flag to true
         }
 
-        if (!isOpening) return;
+        if (!isOpening) return; // if the gate is not opening, return
 
-        if (playOnce && gateAudio != null)
+        if (playOnce && gateAudio != null) // if the gate audio is not null and play once
         {
-            gateAudio.Play();
-            playOnce = false;
+            gateAudio.Play(); // play the gate audio
+            playOnce = false; // set the play once flag to false
         }
 
-        gateVisual.position = Vector3.MoveTowards(
-            gateVisual.position,
-            openPos,
-            openSpeed * Time.deltaTime
+        gateVisual.position = Vector3.MoveTowards( // move the gate to the open position
+            gateVisual.position, // the current position of the gate
+            openPos, // the open position of the gate
+            openSpeed * Time.deltaTime // the speed of the gate
         );
 
-        if (Vector3.Distance(gateVisual.position, openPos) < 0.01f)
+        if (Vector3.Distance(gateVisual.position, openPos) < 0.01f) // if the gate is at the open position
         {
-            gateVisual.position = openPos;
-            isOpening = false;
-            isOpen = true;
+            gateVisual.position = openPos; // set the position of the gate to the open position
+            isOpening = false; // set the is opening flag to false
+            isOpen = true; // set the is open flag to true
         }
     }
 }

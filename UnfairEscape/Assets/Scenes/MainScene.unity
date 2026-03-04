@@ -9874,6 +9874,14 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5261875845605932919, guid: 6ca5d5707533ec84e94defcd05687bf8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5261875845605932919, guid: 6ca5d5707533ec84e94defcd05687bf8, type: 3}
+      propertyPath: groundDrag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5890883326270581721, guid: 6ca5d5707533ec84e94defcd05687bf8, type: 3}
       propertyPath: sensx
       value: 25
