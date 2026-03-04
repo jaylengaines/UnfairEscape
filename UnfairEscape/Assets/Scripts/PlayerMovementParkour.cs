@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class PlayerMovementIce : MonoBehaviour
+public class PlayerMovementParkour : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed; // The speed of the player
@@ -50,10 +50,10 @@ public class PlayerMovementIce : MonoBehaviour
     {
         horizontalInput = 0f; // Horizontal input
         verticalInput = 0f; // Vertical input
-        if (Keyboard.current.dKey.isPressed) horizontalInput += 1f; // Horizontal input
-        if (Keyboard.current.aKey.isPressed) horizontalInput -= 1f; // Horizontal input
-        if (Keyboard.current.wKey.isPressed) verticalInput += 1f; // Vertical input
-        if (Keyboard.current.sKey.isPressed) verticalInput -= 1f; // Vertical input
+        if (Keyboard.current.aKey.isPressed) horizontalInput += 1f; // Horizontal input
+        if (Keyboard.current.dKey.isPressed) horizontalInput -= 1f; // Horizontal input
+        if (Keyboard.current.sKey.isPressed) verticalInput += 1f; // Vertical input
+        if (Keyboard.current.wKey.isPressed) verticalInput -= 1f; // Vertical input
         if (Keyboard.current.spaceKey.isPressed && readyToJump && grounded){
             Jump(); // jumps the player
             readyToJump = false; // sets readyToJump to false so you can't jump again until the jumpCooldown is over

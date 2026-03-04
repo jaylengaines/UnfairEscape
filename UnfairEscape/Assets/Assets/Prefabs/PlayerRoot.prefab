@@ -75,8 +75,9 @@ GameObject:
   - component: {fileID: 4729223044228663349}
   - component: {fileID: 4437732152572500871}
   - component: {fileID: 4584406569548870746}
-  - component: {fileID: 5261875845605932919}
   - component: {fileID: 2658145489410394861}
+  - component: {fileID: 4836634638530474506}
+  - component: {fileID: 2261367738571550058}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -153,7 +154,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   orientation: {fileID: 2185788975999831724}
---- !u!114 &5261875845605932919
+--- !u!114 &2658145489410394861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836851018416366150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa0feb15cb4ab4c43b96682a5cef8c90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FlashlLight
+  light: {fileID: 2867954363641808284}
+--- !u!114 &4836634638530474506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -170,24 +184,35 @@ MonoBehaviour:
   jumpCooldown: 0.25
   airMultiplier: 0.4
   readyToJump: 1
+  groundDrag: 2
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
-  orientation: {fileID: 2185788975999831724}
---- !u!114 &2658145489410394861
+  orientation: {fileID: 0}
+--- !u!114 &2261367738571550058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836851018416366150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa0feb15cb4ab4c43b96682a5cef8c90, type: 3}
+  m_Script: {fileID: 11500000, guid: 093bf83665952da42a718623b89a863b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FlashlLight
-  light: {fileID: 2867954363641808284}
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovementParkour
+  moveSpeed: 7
+  jumpForce: 6
+  jumpCooldown: 0.25
+  airMultiplier: 0.4
+  readyToJump: 1
+  groundDrag: 5
+  playerHeight: 2
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 1024
+  orientation: {fileID: 0}
 --- !u!1 &1031187943737147633
 GameObject:
   m_ObjectHideFlags: 0

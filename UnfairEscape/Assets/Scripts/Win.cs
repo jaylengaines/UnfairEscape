@@ -4,7 +4,7 @@ public class Win : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && GameManager.Instance.hasIceKey){
+        if (other.CompareTag("Player") && GameManager.Instance.hasIceKey && GameManager.Instance.hasDarkZoneKey && GameManager.Instance.hasParkourKey){
             GameManager.Instance.WinGame();
         }
     }

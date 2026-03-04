@@ -1,9 +1,7 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Collider))]
-public class DarkZoneActivator : MonoBehaviour
+public class ParkourZoneActivator : MonoBehaviour
 {
-    [Tooltip("Optional: assign a DarkZone collider GameObject to enable when player touches this activator.")]
     public GameObject zoneToEnable;
 
     void OnTriggerEnter(Collider other)
@@ -15,7 +13,7 @@ public class DarkZoneActivator : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.hasDarkZoneKey = true; // optional if you want dark zone gated behind key
+            GameManager.Instance.hasParkourKey = true; // optional if you want dark zone gated behind key
             gameObject.SetActive(false);           // one-time pickup style
         }
     }

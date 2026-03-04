@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 public class ChaseTarget : MonoBehaviour
 {
     public Transform target;
@@ -26,7 +26,7 @@ public class ChaseTarget : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Player")){
             // destroy the player
-            Destroy(collision.gameObject);
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 }
