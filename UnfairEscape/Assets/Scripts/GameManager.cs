@@ -44,8 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame(){
         Debug.Log("You win!");
-        
-
+        // enable the final gate
     }
     public void EnableDarkZone(){
         hasDarkZoneKey = true;
