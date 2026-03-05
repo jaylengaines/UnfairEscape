@@ -19,22 +19,33 @@ public class PlayerMovementParkour : MonoBehaviour
     // LayerMask is a bitmask that represents the layers that the player can collide with
     public LayerMask whatIsGround; // The layer of the ground
     bool grounded; // Whether the player is grounded
+    bool wasGroundedLastFrame;
     public Transform orientation; // The orientation of the player
     float horizontalInput; // Horizontal input for the player
     float verticalInput; // Vertical input for the player
     Vector3 moveDirection; // The direction of the player
 
+    [Header("Fall Damage")]
+    public float fallDamageThreshold = 15f; // Minimum fall distance before respawn
+    public Transform fallRespawnPoint; // Assign an empty object as respawn location
+
+    float fallStartY;
+    float lowestYWhileAirborne;
 
     Rigidbody rb; // The rigidbody of the player to apply forces to the player
     private void Start()
     {
         rb = GetComponent<Rigidbody>(); // Get the rigidbody component
         rb.freezeRotation = true; // Freeze the rotation of the player
+        wasGroundedLastFrame = true;
+        fallStartY = transform.position.y;
+        lowestYWhileAirborne = transform.position.y;
     }
 
     private void Update() // Update is called every frame, if the MonoBehaviour is enabled
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.25f, whatIsGround); // Checks if the player is grounded
+        HandleFallDamage();
         if (grounded)
             rb.linearDamping = groundDrag; // slows down the player when they are grounded
         else
@@ -87,5 +98,46 @@ public class PlayerMovementParkour : MonoBehaviour
     private void ResetJump(){
         readyToJump = true;
     }
-   
+
+    private void HandleFallDamage()
+    {
+        // Started falling (or jumped) this frame.
+        if (!grounded && wasGroundedLastFrame)
+        {
+            fallStartY = transform.position.y;
+            lowestYWhileAirborne = transform.position.y;
+        }
+
+        // Track the lowest Y while airborne.
+        if (!grounded)
+        {
+            lowestYWhileAirborne = Mathf.Min(lowestYWhileAirborne, transform.position.y);
+        }
+
+        // Landed this frame: compare start height to lowest airborne point.
+        if (grounded && !wasGroundedLastFrame)
+        {
+            float fallDistance = fallStartY - lowestYWhileAirborne;
+            if (fallDistance >= fallDamageThreshold)
+            {
+                RespawnAfterFall();
+            }
+        }
+
+        wasGroundedLastFrame = grounded;
+    }
+
+    private void RespawnAfterFall()
+    {
+        if (fallRespawnPoint == null)
+        {
+            Debug.LogWarning("Fall respawn point is not assigned on PlayerMovementParkour.");
+            return;
+        }
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        transform.position = fallRespawnPoint.position;
+        transform.rotation = fallRespawnPoint.rotation;
+    }
 }
