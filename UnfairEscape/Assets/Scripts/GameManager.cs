@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
 
@@ -16,6 +17,12 @@ public class GameManager : MonoBehaviour
     public GameObject darkZone;
     public GameObject parkourZone;
 
+    [Header("Pause Logic")]
+    // 1) Add these fields near your other variables
+    public bool IsPaused { get; private set; } = false; // is paused is false by default
+    public Key pauseKey = Key.Escape; // pause key is escape (Input System)
+    public GameObject pauseMenuUI; // pause menu ui is optional, can be null
+   
     private void Awake(){
         if (Instance != null && Instance != this){
             Destroy(gameObject);
@@ -30,6 +37,11 @@ public class GameManager : MonoBehaviour
         if (player != null){
             normalMovement = player.GetComponent<PlayerMovement>();
             iceMovement = player.GetComponent<PlayerMovementIce>();
+        }
+    }
+    void Update(){
+        if (Keyboard.current != null && Keyboard.current[pauseKey].wasPressedThisFrame){
+            TogglePause();
         }
     }
 
@@ -54,5 +66,27 @@ public class GameManager : MonoBehaviour
     public void DisableDarkZone(){
         // disable the dark zone
         darkZone.SetActive(false);
+    }
+    public void TogglePause(){
+        if(IsPaused) ResumeGame();
+        else PauseGame();
+    }
+    public void PauseGame(){
+    IsPaused = true;
+    Time.timeScale = 0f;
+    if(pauseMenuUI != null){
+        pauseMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    }
+    public void ResumeGame(){
+        IsPaused = false;
+        Time.timeScale = 1f;
+        if(pauseMenuUI != null){
+            pauseMenuUI.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
