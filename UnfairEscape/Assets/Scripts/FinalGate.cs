@@ -20,6 +20,8 @@ public class FinalGate : MonoBehaviour
 
         closedPos = gateVisual.position;
         openPos = closedPos + Vector3.up * openHeight;
+
+       
     }
 
     void Update()

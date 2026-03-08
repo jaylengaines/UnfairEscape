@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void WinGame(){
         Debug.Log("You win!");
-        // enable the final gate
+        SceneManager.LoadScene("WinScreen");
     }
     public void EnableDarkZone(){
         hasDarkZoneKey = true;
