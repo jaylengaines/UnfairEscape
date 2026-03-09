@@ -11,6 +11,13 @@ public class GameManager : MonoBehaviour
     private PlayerMovementIce iceMovement;
 
     public bool hasIceKey = false;
+
+    public GameObject darkZoneDoor; // the door to the dark zone
+
+    public GameObject parkourDoor;
+
+    public GameObject finalDoor;
+
     public bool hasDarkZoneKey = false;
 
     public bool hasParkourKey = false;
@@ -52,6 +59,16 @@ public class GameManager : MonoBehaviour
     public void SwitchToNormalMovement(){
         normalMovement.enabled = true;
         iceMovement.enabled = false;
+    }
+    // Disable specific door based of key grabbed
+    public void DisableDarkZoneDoor(){
+        darkZoneDoor.SetActive(false);
+    }
+    public void DisableParkourDoor(){
+        parkourDoor.SetActive(false);
+    }
+    public void DisableFinalDoor(){
+        finalDoor.SetActive(false);
     }
 
     public void WinGame(){

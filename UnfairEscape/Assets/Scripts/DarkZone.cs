@@ -9,13 +9,8 @@ public class DarkZone : MonoBehaviour
 
         if (GameManager.Instance != null)
             GameManager.Instance.EnableDarkZone();
+            GameManager.Instance.DisableParkourDoor();
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
 
-        if (GameManager.Instance != null)
-            GameManager.Instance.DisableDarkZone();
-    }
 }

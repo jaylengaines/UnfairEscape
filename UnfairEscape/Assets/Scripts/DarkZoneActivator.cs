@@ -17,6 +17,7 @@ public class DarkZoneActivator : MonoBehaviour
         {
             GameManager.Instance.hasDarkZoneKey = true; // optional if you want dark zone gated behind key
             gameObject.SetActive(false);           // one-time pickup style
+            if (GameManager.Instance.hasDarkZoneKey) GameManager.Instance.DisableParkourDoor();
         }
     }
 }

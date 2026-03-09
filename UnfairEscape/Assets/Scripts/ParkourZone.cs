@@ -37,9 +37,9 @@ public class ParkourZone : MonoBehaviour
 
     public void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
-            GameObject playerObject = player != null ? player : other.gameObject;
-            EnableParkourMovement(playerObject);
+            EnableParkourMovement(player);
             EnableShooters();
+            GameManager.Instance.DisableFinalDoor();
         }
     }
 }
