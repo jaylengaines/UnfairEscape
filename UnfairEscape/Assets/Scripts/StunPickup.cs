@@ -20,6 +20,7 @@ public class StunPickup : MonoBehaviour
         {
             playerStun.IncreaseStunDuration(stunBonus); // increase the stun duration
             gameObject.SetActive(false); // disable pickup after collecting (same pattern as key)
+            GameManager.Instance.EnableBatonUi();
         }
     }
 }

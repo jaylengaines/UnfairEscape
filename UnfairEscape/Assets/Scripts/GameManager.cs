@@ -14,9 +14,13 @@ public class GameManager : MonoBehaviour
 
     public GameObject darkZoneDoor; // the door to the dark zone
 
+    public GameObject OtherCellDoor;
+
     public GameObject parkourDoor;
 
     public GameObject finalDoor;
+
+    public GameObject batonUi;
 
     public bool hasDarkZoneKey = false;
 
@@ -64,13 +68,21 @@ public class GameManager : MonoBehaviour
     public void DisableDarkZoneDoor(){
         darkZoneDoor.SetActive(false);
     }
+    public void DisableOtherCellDoor(){
+        OtherCellDoor.SetActive(false);
+    }
     public void DisableParkourDoor(){
         parkourDoor.SetActive(false);
     }
     public void DisableFinalDoor(){
         finalDoor.SetActive(false);
     }
-
+    public void EnableBatonUi(){
+        batonUi.SetActive(true);
+    }
+    public void DisableBatonUi(){
+        batonUi.SetActive(false);
+    }
     public void WinGame(){
         Debug.Log("You win!");
         SceneManager.LoadScene("WinScreen");

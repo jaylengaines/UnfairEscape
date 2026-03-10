@@ -13,6 +13,7 @@ public class IceKeyZone : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.SwitchToIceMovement();
             GameManager.Instance.DisableDarkZoneDoor();
+            GameManager.Instance.DisableOtherCellDoor();
 
         
     }
