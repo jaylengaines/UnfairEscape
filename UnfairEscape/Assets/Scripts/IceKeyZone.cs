@@ -12,14 +12,9 @@ public class IceKeyZone : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (GameManager.Instance != null)
             GameManager.Instance.SwitchToIceMovement();
+            GameManager.Instance.DisableDarkZoneDoor();
 
         
     }
 
-    void OnTriggerExit(Collider other)
-    {
-        if (!other.CompareTag("Player")) return;
-        if (GameManager.Instance != null)
-            GameManager.Instance.SwitchToNormalMovement();
-    }
 }

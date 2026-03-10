@@ -19,8 +19,9 @@ public class IceZoneActivator : MonoBehaviour
 
         if (GameManager.Instance != null){
             GameManager.Instance.SwitchToIceMovement(); // Switch to ice movement
-            GameManager.Instance.hasKey = true; // Set the hasKey to true
+            GameManager.Instance.hasIceKey = true; // Set the hasIceKey to true
             gameObject.SetActive(false); // Disable the game object
+            if (GameManager.Instance.hasIceKey) GameManager.Instance.DisableDarkZoneDoor();
         }
     }
 }
