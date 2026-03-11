@@ -13,14 +13,14 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadSceneByName(string sceneName)
     {
-        UnlockCursorIfNeeded(sceneName);
+        ApplyCursorForScene(sceneName);
         SceneManager.LoadScene(sceneName);
     }
 
     public void ReloadCurrentScene()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
-        UnlockCursorIfNeeded(currentSceneName);
+        ApplyCursorForScene(currentSceneName);
         SceneManager.LoadScene(currentSceneName);
     }
     public void QuitGame()
@@ -28,7 +28,7 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
 
-    private void UnlockCursorIfNeeded(string sceneName)
+    public static void ApplyCursorForScene(string sceneName)
     {
         if (!CursorUnlockScenes.Contains(sceneName)) return;
 

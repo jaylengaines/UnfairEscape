@@ -54,6 +54,7 @@ public class ChaseTarget : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         if (collision.gameObject.CompareTag("Player")){
             // destroy the player
+            SceneLoader.ApplyCursorForScene("GameOverScene");
             SceneManager.LoadScene("GameOverScene");
         }
     }

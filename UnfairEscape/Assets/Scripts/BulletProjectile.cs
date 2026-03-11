@@ -27,6 +27,7 @@ public class BulletProjectile : MonoBehaviour // Script placed on bullet prefab
 
     void OnCollisionEnter(Collision collision){ // Destroy bullet on physical collision only
         if (collision.gameObject.CompareTag("Player")){
+            SceneLoader.ApplyCursorForScene("GameOverScene");
             SceneManager.LoadScene("GameOverScene");
         }
 

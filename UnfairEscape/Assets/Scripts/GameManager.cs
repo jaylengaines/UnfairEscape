@@ -85,6 +85,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinGame(){
         Debug.Log("You win!");
+        SceneLoader.ApplyCursorForScene("WinScreen");
         SceneManager.LoadScene("WinScreen");
     }
     public void EnableDarkZone(){
