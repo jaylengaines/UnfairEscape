@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     float horizontalInput; // Horizontal input for the player
     float verticalInput; // Vertical input for the player
     Vector3 moveDirection; // The direction of the player
+    public AudioSource walkSound;
 
 
     Rigidbody rb; // The rigidbody of the player to apply forces to the player
@@ -54,6 +55,18 @@ public class PlayerMovement : MonoBehaviour
         if (Keyboard.current.aKey.isPressed) horizontalInput -= 1f; // Horizontal input
         if (Keyboard.current.wKey.isPressed) verticalInput += 1f; // Vertical input
         if (Keyboard.current.sKey.isPressed) verticalInput -= 1f; // Vertical input
+        bool isMoving = horizontalInput != 0f || verticalInput != 0f;
+        if (walkSound != null)
+        {
+            if (isMoving && !walkSound.isPlaying)
+            {
+                walkSound.Play();
+            }
+            else if (!isMoving && walkSound.isPlaying)
+            {
+                walkSound.Stop();
+            }
+        }
         if (Keyboard.current.spaceKey.isPressed && readyToJump && grounded){
             Jump(); // jumps the player
             readyToJump = false; // sets readyToJump to false so you can't jump again until the jumpCooldown is over

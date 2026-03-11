@@ -29,7 +29,7 @@ public class PlayerMovementIce : MonoBehaviour
     public Vector2 lockedInput; // The locked input
     public float stopSpeedThreshold; // The threshold at which the player stops moving
     public float inputDeadZone; // The dead zone of the input
-    
+    public AudioSource walkSound;
 
     Rigidbody rb; // The rigidbody of the player to apply forces to the player
     private void Start()
@@ -52,6 +52,7 @@ public class PlayerMovementIce : MonoBehaviour
             rb.linearDamping = 0; // doesn't slow down the player when they are not grounded
         MyInput(); // Get the input
         SpeedControl(); // Speed control
+        UpdateWalkSound();
     }
     private void FixedUpdate() // FixedUpdate is called every fixed frame-rate frame, if the MonoBehaviour is enabled
     {
@@ -125,6 +126,22 @@ public class PlayerMovementIce : MonoBehaviour
     }
     private void ResetJump(){
         readyToJump = true;
+    }
+
+    private void UpdateWalkSound()
+    {
+        if (walkSound == null) return;
+
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        bool isMoving = grounded && flatVel.magnitude > 0.1f;
+        if (isMoving && !walkSound.isPlaying)
+        {
+            walkSound.Play();
+        }
+        else if (!isMoving && walkSound.isPlaying)
+        {
+            walkSound.Stop();
+        }
     }
    
 }
