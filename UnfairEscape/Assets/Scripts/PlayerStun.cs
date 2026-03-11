@@ -29,7 +29,7 @@ public class PlayerStun : MonoBehaviour
         {
             nextStunTime = Time.time + stunCooldown;
             StartCoroutine(Stun());
-            Debug.Log("Stunned");
+            
         }
     }
 
@@ -40,6 +40,7 @@ public class PlayerStun : MonoBehaviour
         EnemyStun enemyStun = other.GetComponent<EnemyStun>(); // get the enemy stun component
         if (enemyStun != null) // if the enemy stun component is not found, return 
             enemyStun.Stun(stunDuration); // stun the enemy
+            Debug.Log("Stunned");
     }
 
     private IEnumerator Stun()
